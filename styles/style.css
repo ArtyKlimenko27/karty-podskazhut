@@ -4,9 +4,27 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg-color: #F3EFEC;
+  --text-color: #312A4E;
+  --accent-color: #FFAB6B;
+  --main-font: Raleway;
+  --accent-font: 'STIX Two Text';
+}
+
 .page {
+  background-color: var(--bg-color);
   min-inline-size: 360px;
   margin: 0;
+  font-family: var(--main-font, Arial, Helvetica, sans-serif);
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.theme_dark {
+  --bg-color: #171717;
+  --text-color: #B3B3B3;
+  --accent-color: trasparent;
 }
 
 p,
@@ -19,4 +37,231 @@ ol,
 li,
 figure {
   margin: 0;
+}
+
+button:focus,
+a:focus {
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 1px solid currentColor;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+.header {
+  padding-top: 10vw;
+}
+
+.header__menu {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  align-items: center;
+}
+
+.header__theme-toggler {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 8px;
+  margin-right: -5px;
+}
+
+.header__theme-toggler li {
+  list-style: none;
+  padding: 24px 0;
+}
+
+.header__theme-button {
+  font-family: inherit;
+  color: currentColor;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  line-height: 104%;
+  font-size: inherit;
+}
+
+.header__theme-button:hover {
+  text-decoration: underline;
+}
+
+.header__theme-button_is-active {
+  font-weight: 600;
+  position: relative;
+}
+
+.header__theme-button_is-active:hover {
+  text-decoration: none;
+}
+
+.header__theme-button_is-active::after {
+  content: " ";
+  position: absolute;
+  height: 0.3em;
+  background-color: var(--accent-color);
+  width: 95%;
+  right: 3%;
+  top: 53%;
+  z-index: -1;
+}
+
+.theme_dark .header__theme-button_is-active::after {
+  background-image: url(../images/pattern.svg);
+}
+
+.heading {
+  font-family: 'STIX Two Text';
+  font-weight: 600;
+  line-height: 90%;
+  text-align: center;
+}
+
+.content-section {
+  padding: 0 5vi;
+}
+
+.header__title {
+  font-size: clamp(3.75rem, 2.5rem + 5.5556vw, 7.5rem);
+  margin-bottom: 40px;
+}
+
+.content__title {
+  font-size: 30px;
+  margin-top: 6.4vw;
+  margin-bottom: 2.25vw;
+}
+
+.content__paragraph {
+  font-size: 18px;
+}
+
+.content__text-block .content__paragraph:not(:last-of-type) {
+  margin-bottom: 1.5em;
+}
+
+.content__blockquote {
+  font-style: italic;
+  line-height: 200%;
+  width: 75%;
+  margin: 0 auto;
+  font-size: 18px;
+  margin-bottom: 1.5rem;
+}
+
+.content__paragraph a {
+  color: currentColor;
+}
+
+.content__list {
+  list-style: none;
+  padding-inline-start: 40px;
+  position: relative;
+}
+
+.content__list li:not(:last-child) {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.content__list li::before {
+  content: " ";
+  position: absolute;
+  left: 15px;
+  width: 15px;
+  height: 15px;
+  display: block;
+  background-image: url("../images/marker-light.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.theme_dark .content__list li::before {
+  background-image: url("../images/marker-dark.svg");
+}
+
+.content__text-block_type_first-lettered .content__paragraph:first-of-type:first-letter {
+  background-color: var(--accent-color);
+  padding: 0 4px;
+  margin-right: 5px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.theme_dark .content__text-block_type_first-lettered .content__paragraph:first-of-type:first-letter {
+  border: 1px solid currentColor;
+}
+
+.content__figure {
+  margin-top: 6.55vw;
+  width: calc(100% + 10vi);
+  position: relative;
+  margin-left: -5vi;
+  margin-bottom: 6.3vw;
+}
+
+.content__picture {
+  width: 100%;
+}
+
+.content__picture-caption {
+  border-bottom: 1px solid currentColor;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 18px;
+}
+
+.content__card {
+  margin-block-start: 7vw;
+  aspect-ratio: 4 / 3;
+  border: 1px solid currentColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+
+}
+
+.content__card-title {
+  font-size: 60px;
+}
+
+.colored-text {
+  position: relative;
+}
+
+.colored-text::after {
+  content: " ";
+  position: absolute;
+  height: 0.3em;
+  background-color: var(--accent-color);
+  width: 105%;
+  left: -2%;
+  top: 53%;
+  z-index: -1;
+}
+
+.theme_dark .colored-text::after {
+  background-image: url(../images/pattern.svg);
+}
+
+.footer {
+  border-top: 1px solid currentColor;
+  margin-top: 9.5vw;
+  padding: 2.5%;
+  display: flex;
+  justify-content: center;
+}
+
+.footer__copyright {
+  font-size: inherit;
+  text-transform: uppercase;
 }
